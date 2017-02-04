@@ -1,0 +1,16 @@
+{
+  "name": "tiny-express",
+  "version": "1.0.0",
+  "description": "A simple Express-like framework, written in TypeScipt",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "viko16",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^7.0.4",
+    "typescript": "^2.1.5"
+  }
+}
