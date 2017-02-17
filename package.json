@@ -4,7 +4,8 @@
   "description": "A simple Express-like framework, written in TypeScipt",
   "main": "out/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node out/index"
   },
   "keywords": [],
   "author": "viko16",
