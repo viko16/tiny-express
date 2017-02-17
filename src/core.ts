@@ -3,7 +3,7 @@
 import * as http from 'http'
 import * as url from 'url'
 
-const METHODS = ['get', 'post', 'put', 'delete', 'options']
+const METHODS = ['get', 'post', 'put', 'delete', 'options', 'all']
 
 interface IRoute {
   method: string,
@@ -16,7 +16,8 @@ interface ExpressLike {
   post: Function
   put: Function
   delete: Function
-  options: Function
+  options: Function,
+  all: Function
 }
 type Callback = (req?: http.IncomingMessage, res?: http.ServerResponse) => void
 
@@ -31,6 +32,7 @@ class Application implements ExpressLike {
   put(path: string, cb: Callback) { }
   delete(path: string, cb: Callback) { }
   options(path: string, cb: Callback) { }
+  all(path: string, cb: Callback) { }
 
   constructor() {
     this.methods = METHODS
@@ -50,8 +52,9 @@ class Application implements ExpressLike {
     return (req: http.IncomingMessage, res: http.ServerResponse) => {
       // Find routes
       for (const route of this.routes) {
-        if (route.method === method && route.path === path) {
+        if ((route.method === method || route.method === 'all') && route.path === path) {
           route.cb(req, res)
+          return
         }
       }
 
